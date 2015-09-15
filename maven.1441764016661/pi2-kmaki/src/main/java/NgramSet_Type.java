@@ -1,5 +1,5 @@
 
-/* First created by JCasGen Mon Sep 14 14:12:55 EDT 2015 */
+/* First created by JCasGen Mon Sep 14 20:27:22 EDT 2015 */
 
 import org.apache.uima.jcas.JCas;
 import org.apache.uima.jcas.JCasRegistry;
@@ -10,14 +10,13 @@ import org.apache.uima.cas.impl.TypeImpl;
 import org.apache.uima.cas.Type;
 import org.apache.uima.cas.impl.FeatureImpl;
 import org.apache.uima.cas.Feature;
-import org.apache.uima.jcas.tcas.Annotation_Type;
 
-/** Subclass of span annotating an answer choice for a particular TestElement.  Is aware of whether it is a correct answer choice or not.
+/** Subclass of Span annotating selected ngrams for the given span.
 
-Fields inherited from Span: 	begin, end, annotator, text
+Fields inherited from Span: begin, end, annotator, text
  * Updated by JCasGen Mon Sep 14 20:27:22 EDT 2015
  * @generated */
-public class Answer_Type extends Span_Type {
+public class NgramSet_Type extends Span_Type {
   /** @generated 
    * @return the generator for this type
    */
@@ -27,47 +26,47 @@ public class Answer_Type extends Span_Type {
   private final FSGenerator fsGenerator = 
     new FSGenerator() {
       public FeatureStructure createFS(int addr, CASImpl cas) {
-  			 if (Answer_Type.this.useExistingInstance) {
+  			 if (NgramSet_Type.this.useExistingInstance) {
   			   // Return eq fs instance if already created
-  		     FeatureStructure fs = Answer_Type.this.jcas.getJfsFromCaddr(addr);
+  		     FeatureStructure fs = NgramSet_Type.this.jcas.getJfsFromCaddr(addr);
   		     if (null == fs) {
-  		       fs = new Answer(addr, Answer_Type.this);
-  			   Answer_Type.this.jcas.putJfsFromCaddr(addr, fs);
+  		       fs = new NgramSet(addr, NgramSet_Type.this);
+  			   NgramSet_Type.this.jcas.putJfsFromCaddr(addr, fs);
   			   return fs;
   		     }
   		     return fs;
-        } else return new Answer(addr, Answer_Type.this);
+        } else return new NgramSet(addr, NgramSet_Type.this);
   	  }
     };
   /** @generated */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = Answer.typeIndexID;
+  public final static int typeIndexID = NgramSet.typeIndexID;
   /** @generated 
      @modifiable */
   @SuppressWarnings ("hiding")
-  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("Answer");
+  public final static boolean featOkTst = JCasRegistry.getFeatOkTst("NgramSet");
  
   /** @generated */
-  final Feature casFeat_correct;
+  final Feature casFeat_ngrams;
   /** @generated */
-  final int     casFeatCode_correct;
+  final int     casFeatCode_ngrams;
   /** @generated
    * @param addr low level Feature Structure reference
    * @return the feature value 
    */ 
-  public boolean getCorrect(int addr) {
-        if (featOkTst && casFeat_correct == null)
-      jcas.throwFeatMissing("correct", "Answer");
-    return ll_cas.ll_getBooleanValue(addr, casFeatCode_correct);
+  public int getNgrams(int addr) {
+        if (featOkTst && casFeat_ngrams == null)
+      jcas.throwFeatMissing("ngrams", "NgramSet");
+    return ll_cas.ll_getRefValue(addr, casFeatCode_ngrams);
   }
   /** @generated
    * @param addr low level Feature Structure reference
    * @param v value to set 
    */    
-  public void setCorrect(int addr, boolean v) {
-        if (featOkTst && casFeat_correct == null)
-      jcas.throwFeatMissing("correct", "Answer");
-    ll_cas.ll_setBooleanValue(addr, casFeatCode_correct, v);}
+  public void setNgrams(int addr, int v) {
+        if (featOkTst && casFeat_ngrams == null)
+      jcas.throwFeatMissing("ngrams", "NgramSet");
+    ll_cas.ll_setRefValue(addr, casFeatCode_ngrams, v);}
     
   
 
@@ -78,13 +77,13 @@ public class Answer_Type extends Span_Type {
 	 * @param jcas JCas
 	 * @param casType Type 
 	 */
-  public Answer_Type(JCas jcas, Type casType) {
+  public NgramSet_Type(JCas jcas, Type casType) {
     super(jcas, casType);
     casImpl.getFSClassRegistry().addGeneratorForType((TypeImpl)this.casType, getFSGenerator());
 
  
-    casFeat_correct = jcas.getRequiredFeatureDE(casType, "correct", "uima.cas.Boolean", featOkTst);
-    casFeatCode_correct  = (null == casFeat_correct) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_correct).getCode();
+    casFeat_ngrams = jcas.getRequiredFeatureDE(casType, "ngrams", "uima.cas.FSList", featOkTst);
+    casFeatCode_ngrams  = (null == casFeat_ngrams) ? JCas.INVALID_FEATURE_CODE : ((FeatureImpl)casFeat_ngrams).getCode();
 
   }
 }

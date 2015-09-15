@@ -1,27 +1,26 @@
 
 
-/* First created by JCasGen Mon Sep 14 14:12:55 EDT 2015 */
+/* First created by JCasGen Mon Sep 14 20:27:22 EDT 2015 */
 
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
 import org.apache.uima.jcas.cas.TOP_Type;
 
-import org.apache.uima.jcas.cas.FSArray;
-import org.apache.uima.jcas.tcas.Annotation;
+import org.apache.uima.jcas.cas.FSList;
 
 
-/** Subclass of span annotating an answer choice for a particular TestElement.  Is aware of whether it is a correct answer choice or not.
+/** Subclass of Span which annotates a tokenization for its span.
 
 Fields inherited from Span: 	begin, end, annotator, text
  * Updated by JCasGen Mon Sep 14 20:27:22 EDT 2015
  * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI2/pi2-kmaki/maven.1441764016661/pi2-kmaki/src/main/resources/pi2-kmaki-typesystem.xml
  * @generated */
-public class Answer extends Span {
+public class TokenizedSpan extends Span {
   /** @generated
    * @ordered 
    */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = JCasRegistry.register(Answer.class);
+  public final static int typeIndexID = JCasRegistry.register(TokenizedSpan.class);
   /** @generated
    * @ordered 
    */
@@ -35,14 +34,14 @@ public class Answer extends Span {
  
   /** Never called.  Disable default constructor
    * @generated */
-  protected Answer() {/* intentionally empty block */}
+  protected TokenizedSpan() {/* intentionally empty block */}
     
   /** Internal - constructor used by generator 
    * @generated
    * @param addr low level Feature Structure reference
    * @param type the type of this Feature Structure 
    */
-  public Answer(int addr, TOP_Type type) {
+  public TokenizedSpan(int addr, TOP_Type type) {
     super(addr, type);
     readObject();
   }
@@ -50,7 +49,7 @@ public class Answer extends Span {
   /** @generated
    * @param jcas JCas to which this Feature Structure belongs 
    */
-  public Answer(JCas jcas) {
+  public TokenizedSpan(JCas jcas) {
     super(jcas);
     readObject();   
   } 
@@ -60,7 +59,7 @@ public class Answer extends Span {
    * @param begin offset to the begin spot in the SofA
    * @param end offset to the end spot in the SofA 
   */  
-  public Answer(JCas jcas, int begin, int end) {
+  public TokenizedSpan(JCas jcas, int begin, int end) {
     super(jcas);
     setBegin(begin);
     setEnd(end);
@@ -79,25 +78,25 @@ public class Answer extends Span {
  
     
   //*--------------*
-  //* Feature: correct
+  //* Feature: tokens
 
-  /** getter for correct - gets Indicates correctness of this Span as an answer choice under "gold" labels.
+  /** getter for tokens - gets The tokens identified in the tokenization of this Span.
    * @generated
    * @return value of the feature 
    */
-  public boolean getCorrect() {
-    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_correct == null)
-      jcasType.jcas.throwFeatMissing("correct", "Answer");
-    return jcasType.ll_cas.ll_getBooleanValue(addr, ((Answer_Type)jcasType).casFeatCode_correct);}
+  public FSList getTokens() {
+    if (TokenizedSpan_Type.featOkTst && ((TokenizedSpan_Type)jcasType).casFeat_tokens == null)
+      jcasType.jcas.throwFeatMissing("tokens", "TokenizedSpan");
+    return (FSList)(jcasType.ll_cas.ll_getFSForRef(jcasType.ll_cas.ll_getRefValue(addr, ((TokenizedSpan_Type)jcasType).casFeatCode_tokens)));}
     
-  /** setter for correct - sets Indicates correctness of this Span as an answer choice under "gold" labels. 
+  /** setter for tokens - sets The tokens identified in the tokenization of this Span. 
    * @generated
    * @param v value to set into the feature 
    */
-  public void setCorrect(boolean v) {
-    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_correct == null)
-      jcasType.jcas.throwFeatMissing("correct", "Answer");
-    jcasType.ll_cas.ll_setBooleanValue(addr, ((Answer_Type)jcasType).casFeatCode_correct, v);}    
+  public void setTokens(FSList v) {
+    if (TokenizedSpan_Type.featOkTst && ((TokenizedSpan_Type)jcasType).casFeat_tokens == null)
+      jcasType.jcas.throwFeatMissing("tokens", "TokenizedSpan");
+    jcasType.ll_cas.ll_setRefValue(addr, ((TokenizedSpan_Type)jcasType).casFeatCode_tokens, jcasType.ll_cas.ll_getFSRef(v));}    
   }
 
     

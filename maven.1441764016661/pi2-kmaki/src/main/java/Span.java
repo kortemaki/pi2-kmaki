@@ -1,27 +1,25 @@
 
 
-/* First created by JCasGen Mon Sep 14 14:12:55 EDT 2015 */
+/* First created by JCasGen Mon Sep 14 20:27:22 EDT 2015 */
 
 import org.apache.uima.jcas.JCas; 
 import org.apache.uima.jcas.JCasRegistry;
 import org.apache.uima.jcas.cas.TOP_Type;
 
-import org.apache.uima.jcas.cas.FSArray;
-import org.apache.uima.jcas.tcas.Annotation;
 
 
-/** Subclass of span annotating an answer choice for a particular TestElement.  Is aware of whether it is a correct answer choice or not.
+/** Subclass of SelfAwareAnnotation.  Annotates a span of text with a String that may encode information about the span of text.
 
-Fields inherited from Span: 	begin, end, annotator, text
+Fields inherited from SelfAwareAnnotation: 	begin, end, annotator
  * Updated by JCasGen Mon Sep 14 20:27:22 EDT 2015
  * XML source: /media/maki/OS/Users/Keith/Documents/CMU/Coursework/11791/PI2/pi2-kmaki/maven.1441764016661/pi2-kmaki/src/main/resources/pi2-kmaki-typesystem.xml
  * @generated */
-public class Answer extends Span {
+public class Span extends SelfAwareAnnotation {
   /** @generated
    * @ordered 
    */
   @SuppressWarnings ("hiding")
-  public final static int typeIndexID = JCasRegistry.register(Answer.class);
+  public final static int typeIndexID = JCasRegistry.register(Span.class);
   /** @generated
    * @ordered 
    */
@@ -35,14 +33,14 @@ public class Answer extends Span {
  
   /** Never called.  Disable default constructor
    * @generated */
-  protected Answer() {/* intentionally empty block */}
+  protected Span() {/* intentionally empty block */}
     
   /** Internal - constructor used by generator 
    * @generated
    * @param addr low level Feature Structure reference
    * @param type the type of this Feature Structure 
    */
-  public Answer(int addr, TOP_Type type) {
+  public Span(int addr, TOP_Type type) {
     super(addr, type);
     readObject();
   }
@@ -50,7 +48,7 @@ public class Answer extends Span {
   /** @generated
    * @param jcas JCas to which this Feature Structure belongs 
    */
-  public Answer(JCas jcas) {
+  public Span(JCas jcas) {
     super(jcas);
     readObject();   
   } 
@@ -60,7 +58,7 @@ public class Answer extends Span {
    * @param begin offset to the begin spot in the SofA
    * @param end offset to the end spot in the SofA 
   */  
-  public Answer(JCas jcas, int begin, int end) {
+  public Span(JCas jcas, int begin, int end) {
     super(jcas);
     setBegin(begin);
     setEnd(end);
@@ -79,25 +77,29 @@ public class Answer extends Span {
  
     
   //*--------------*
-  //* Feature: correct
+  //* Feature: text
 
-  /** getter for correct - gets Indicates correctness of this Span as an answer choice under "gold" labels.
+  /** getter for text - gets The text annotated by the span.
+
+**Note that this text may differ from the portion of the annotated TestElement as indexed between begin and end!!
    * @generated
    * @return value of the feature 
    */
-  public boolean getCorrect() {
-    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_correct == null)
-      jcasType.jcas.throwFeatMissing("correct", "Answer");
-    return jcasType.ll_cas.ll_getBooleanValue(addr, ((Answer_Type)jcasType).casFeatCode_correct);}
+  public String getText() {
+    if (Span_Type.featOkTst && ((Span_Type)jcasType).casFeat_text == null)
+      jcasType.jcas.throwFeatMissing("text", "Span");
+    return jcasType.ll_cas.ll_getStringValue(addr, ((Span_Type)jcasType).casFeatCode_text);}
     
-  /** setter for correct - sets Indicates correctness of this Span as an answer choice under "gold" labels. 
+  /** setter for text - sets The text annotated by the span.
+
+**Note that this text may differ from the portion of the annotated TestElement as indexed between begin and end!! 
    * @generated
    * @param v value to set into the feature 
    */
-  public void setCorrect(boolean v) {
-    if (Answer_Type.featOkTst && ((Answer_Type)jcasType).casFeat_correct == null)
-      jcasType.jcas.throwFeatMissing("correct", "Answer");
-    jcasType.ll_cas.ll_setBooleanValue(addr, ((Answer_Type)jcasType).casFeatCode_correct, v);}    
+  public void setText(String v) {
+    if (Span_Type.featOkTst && ((Span_Type)jcasType).casFeat_text == null)
+      jcasType.jcas.throwFeatMissing("text", "Span");
+    jcasType.ll_cas.ll_setStringValue(addr, ((Span_Type)jcasType).casFeatCode_text, v);}    
   }
 
     
